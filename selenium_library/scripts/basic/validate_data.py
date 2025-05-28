@@ -2,7 +2,7 @@ from selenium_library.browser_setup import browser
 
 with browser:
     url = 'https://www.wikipedia.org/'
-    browser.get('https://www.wikipedia.org/')
+    browser.get(url)
 
     current_url = browser.current_url
     assert current_url == url, f'Expected URL: {url}, actual: {current_url}'
