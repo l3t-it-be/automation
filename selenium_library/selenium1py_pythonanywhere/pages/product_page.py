@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from selenium_library.selenium1py_pythonanywhere.pages.base_page import (
     BasePage,
 )
@@ -10,19 +8,19 @@ class ProductPage(BasePage):
         super().__init__(browser)
 
         self.add_to_basket_button_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             'button.btn-add-to-basket',
         )
         self.new_year_text_in_url = '?promo=newYear'
-        self.success_message_locator = (By.CSS_SELECTOR, '.alertinner')
-        self.product_name_locator = (By.CSS_SELECTOR, '.product_main h1')
+        self.success_message_locator = ('css selector', '.alertinner')
+        self.product_name_locator = ('css selector', '.product_main h1')
         self.product_name_in_message_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '.alertinner strong',
         )
-        self.product_price_locator = (By.CSS_SELECTOR, 'p.price_color')
+        self.product_price_locator = ('css selector', 'p.price_color')
         self.product_price_in_message_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '.alertinner p strong',
         )
 

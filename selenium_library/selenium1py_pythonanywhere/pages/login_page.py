@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from selenium_library.selenium1py_pythonanywhere.pages.base_page import (
     BasePage,
 )
@@ -11,23 +9,23 @@ class LoginPage(BasePage):
         super().__init__(browser)
 
         self.text_in_url = 'login'
-        self.login_form_locator = (By.CSS_SELECTOR, '#login_form')
-        self.register_form_locator = (By.CSS_SELECTOR, '#register_form')
+        self.login_form_locator = ('css selector', '#login_form')
+        self.register_form_locator = ('css selector', '#register_form')
 
         self.registration_email_input_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '#id_registration-email',
         )
         self.registration_password_input_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '#id_registration-password1',
         )
         self.registration_confirm_password_input_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '#id_registration-password2',
         )
         self.submit_registration_button_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             'button[name="registration_submit"]',
         )
 

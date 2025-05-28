@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from selenium_library.selenium1py_pythonanywhere.pages.base_page import (
     BasePage,
 )
@@ -9,9 +7,9 @@ class BasketPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
-        self.basket_items_locator = (By.CSS_SELECTOR, '.basket-items')
+        self.basket_items_locator = ('css selector', '.basket-items')
         self.empty_basket_message_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '#content_inner p',
         )
 

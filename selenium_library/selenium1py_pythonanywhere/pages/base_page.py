@@ -4,7 +4,6 @@ from selenium.common import (
     TimeoutException,
     NoAlertPresentException,
 )
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -14,12 +13,12 @@ class BasePage:
         self.browser = browser
 
         self.url = 'https://selenium1py.pythonanywhere.com/'
-        self.basket_link_locator = (By.CSS_SELECTOR, '.basket-mini a.btn')
-        self.login_link_locator = (By.CSS_SELECTOR, '#login_link')
-        self.search_button_locator = (By.CSS_SELECTOR, 'input.btn')
+        self.basket_link_locator = ('css selector', '.basket-mini a.btn')
+        self.login_link_locator = ('css selector', '#login_link')
+        self.search_button_locator = ('css selector', 'input.btn')
 
-        self.user_icon = (By.CSS_SELECTOR, '.icon-user')
-        self.user_email = (By.CSS_SELECTOR, 'tr:nth-child(2) td')
+        self.user_icon = ('css selector', '.icon-user')
+        self.user_email = ('css selector', 'tr:nth-child(2) td')
 
     def open_page(self, url):
         return self.browser.get(url)

@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from selenium_library.suninjuly_github_io.pages.base_page import BasePage
 from selenium_library.suninjuly_github_io.test_data.registration import (
     welcome_text_expected,
@@ -11,19 +9,19 @@ class RegistrationPage(BasePage):
         super().__init__(browser)
 
         self.first_name_input_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '.first_block input.first',
         )
         self.last_name_input_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '.first_block input.second',
         )
         self.email_input_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '.first_block input.third',
         )
-        self.submit_button_locator = (By.CSS_SELECTOR, 'button')
-        self.welcome_text_locator = (By.CSS_SELECTOR, 'h1')
+        self.submit_button_locator = ('css selector', 'button')
+        self.welcome_text_locator = ('css selector', 'h1')
 
     @property
     def first_name_input(self):

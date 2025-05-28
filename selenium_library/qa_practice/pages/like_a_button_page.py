@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from selenium_library.qa_practice.pages.base_page import BasePage
 
 
@@ -8,7 +6,7 @@ class LikeAButtonPage(BasePage):
         super().__init__(browser)
 
         self.url = 'https://www.qa-practice.com/elements/button/like_a_button'
-        self.like_a_button_locator = (By.LINK_TEXT, 'Click')
+        self.like_a_button_locator = ('link text', 'Click')
 
     @property
     def like_a_button(self):

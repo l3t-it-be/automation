@@ -1,10 +1,7 @@
-from selenium.webdriver.common.by import By
-
-
 class BasePage:
     def __init__(self, browser):
         self.browser = browser
-        self.result_locator = (By.CSS_SELECTOR, '#result-text')
+        self.result_locator = ('css selector', '#result-text')
 
     def open_page(self, url):
         return self.browser.get(url)

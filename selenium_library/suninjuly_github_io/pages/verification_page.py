@@ -1,8 +1,7 @@
-from selenium.webdriver.common.by import By
-
-from selenium_library.suninjuly_github_io.pages.base_page import BasePage
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
+
+from selenium_library.suninjuly_github_io.pages.base_page import BasePage
 
 
 class VerificationPage(BasePage):
@@ -10,8 +9,8 @@ class VerificationPage(BasePage):
         super().__init__(browser)
 
         self.url = 'https://suninjuly.github.io/wait2.html'
-        self.verify_button_locator = (By.CSS_SELECTOR, '#verify')
-        self.message_locator = (By.CSS_SELECTOR, '#verify_message')
+        self.verify_button_locator = ('css selector', '#verify')
+        self.message_locator = ('css selector', '#verify_message')
 
     @property
     def verify_button(self):

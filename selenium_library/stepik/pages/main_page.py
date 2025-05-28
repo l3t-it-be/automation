@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -10,11 +9,11 @@ class MainPage(BasePage):
         super().__init__(browser)
 
         self.profile_menu_button_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             'button[aria-label="Profile"]',
         )
         self.profile_button_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '[data-qa="menu-item-profile"]',
         )
 

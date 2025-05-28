@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -15,16 +14,16 @@ class LoginPage(BasePage):
 
         self.url = 'https://stepik.org/catalog'
         self.log_in_button_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             'a[href="/catalog?auth=login"]',
         )
-        self.login_email_input_locator = (By.CSS_SELECTOR, '#id_login_email')
+        self.login_email_input_locator = ('css selector', '#id_login_email')
         self.login_password_input_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             '#id_login_password',
         )
         self.submit_log_in_button_locator = (
-            By.CSS_SELECTOR,
+            'css selector',
             'button[type="submit"]',
         )
 

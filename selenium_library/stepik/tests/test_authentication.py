@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from selenium_library.stepik.pages.login_page import LoginPage
@@ -14,6 +16,7 @@ class TestStepik:
     def test_successful_login(self, browser):
         login_page = LoginPage(browser)
         login_page.open_page(login_page.url)
+        time.sleep(1)
 
         login_page.log_in_button.click()
         login_page.fill_out_login_form()
