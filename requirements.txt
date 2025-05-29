@@ -3,3 +3,4 @@ selenium~=4.33.0
 webdriver-manager~=4.0.2
 Faker~=37.3.0
 fake-useragent~=2.2.0
+pytest-rerunfailures~=15.1
