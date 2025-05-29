@@ -16,7 +16,7 @@ class TestStepik:
     def test_successful_login(self, browser):
         login_page = LoginPage(browser)
         login_page.open_page(login_page.url)
-        time.sleep(1)
+        time.sleep(2)
 
         login_page.log_in_button.click()
         login_page.fill_out_login_form()
