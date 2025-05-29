@@ -4,17 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       deployment_target:
-        description: 'Choose target'
+        description: Choose target
         required: true
-        default:
-          type: choice
-          options:
-            - all_tests
-            - qa_practice_tests
-            - pythonanywhere_tests
-            - stepik_tests
-            - suninjuly_tests
-
+        type: choice
+        options:
+          - all_tests
+          - qa_practice_tests
+          - pythonanywhere_tests
+          - stepik_tests
+          - suninjuly_tests
+        default: all_tests
 
 jobs:
   tests:
@@ -31,17 +30,17 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: all_tests
-        if: "github.event.inputs.deployment_target == 'all_tests'"
+        if: github.event.inputs.deployment_target == 'all_tests'
         run: pytest --reruns 3 --reruns-delay 1
       - name: qa_practice_tests
-        if: "github.event.inputs.deployment_target == 'qa_practice_tests'"
-        run: pytest -k qa_practice  --reruns 3 --reruns-delay 1
+        if: github.event.inputs.deployment_target == 'qa_practice_tests'
+        run: pytest -k qa_practice --reruns 3 --reruns-delay 1
       - name: pythonanywhere_tests
-        if: "github.event.inputs.deployment_target == 'pythonanywhere_tests'"
+        if: github.event.inputs.deployment_target == 'pythonanywhere_tests'
         run: pytest -k selenium1py_pythonanywhere --reruns 3 --reruns-delay 1
       - name: stepik_tests
-        if: "github.event.inputs.deployment_target == 'stepik_tests'"
+        if: github.event.inputs.deployment_target == 'stepik_tests'
         run: pytest -k stepik --reruns 3 --reruns-delay 1
       - name: suninjuly_tests
-        if: "github.event.inputs.deployment_target == 'suninjuly_tests'"
+        if: github.event.inputs.deployment_target == 'suninjuly_tests'
         run: pytest -k suninjuly_github_io --reruns 3 --reruns-delay 1
