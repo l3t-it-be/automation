@@ -6,6 +6,7 @@ on:
       deployment_target:
         description: Choose target
         required: true
+        default:
         type: choice
         options:
           - all_tests
@@ -13,7 +14,7 @@ on:
           - pythonanywhere_tests
           - stepik_tests
           - suninjuly_tests
-        default:
+
 
 jobs:
   tests:
