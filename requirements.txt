@@ -8,4 +8,4 @@ aiohttp~=3.12.6
 aiohttp-retry~=2.9.1
 bs4~=0.0.2
 beautifulsoup4~=4.13.4
-lxml~=5.4.0
+aiofiles~=24.1.0

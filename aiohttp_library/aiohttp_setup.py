@@ -8,30 +8,32 @@ ua = UserAgent()
 
 
 class AsyncSessionManager:
-    def __init__(self, max_connections: int = 10):
-        self.max_connections = max_connections
-        self.semaphore = asyncio.Semaphore(max_connections)
+    def __init__(self):
         self.user_agent = ua.random
         self.connector = aiohttp.TCPConnector(
-            force_close=True, limit=0, enable_cleanup_closed=True
+            limit_per_host=8, force_close=True, enable_cleanup_closed=True
         )
         self.session = aiohttp.ClientSession(
             connector=self.connector,
             headers={'User-Agent': self.user_agent, 'Accept-Charset': 'utf-8'},
-            timeout=aiohttp.ClientTimeout(total=60),
+            timeout=aiohttp.ClientTimeout(
+                total=90,
+                connect=30,
+                sock_read=30,
+            ),
         )
 
     def create_client(self):
         retry_options = ExponentialRetry(
-            max_timeout=120,
-            statuses={301, 302, 500, 502, 503, 504},
+            max_timeout=150,
+            statuses={429, 500, 502, 503, 504},
             exceptions={aiohttp.ClientError, asyncio.TimeoutError},
         )
 
         return RetryClient(
             retry_options=retry_options,
             client_session=self.session,
-            start_timeout=10,
+            start_timeout=15,
         )
 
     async def close_session(self):
