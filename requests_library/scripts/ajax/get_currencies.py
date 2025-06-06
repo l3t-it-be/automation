@@ -12,4 +12,7 @@ data = {
 response = get_web_data(
     'http://31.130.149.237/api/v1/ajax/GetSum', params=data, json=True
 )
-print(round(response['getSum'], 2))
+if response:
+    print(round(response['getSum'], 2))
+else:
+    print('API doesn\'t respond')

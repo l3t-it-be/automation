@@ -39,6 +39,9 @@ def get_web_data(url: str, session=None, json=False, params=None, auth=None,
         if check_status:
             response.raise_for_status()
 
+        if not stream or not iter_content:
+            response.encoding = 'utf-8'
+
         if return_response:
             return response
 
@@ -51,7 +54,6 @@ def get_web_data(url: str, session=None, json=False, params=None, auth=None,
                 else:
                     return response.content
             else:
-                response.encoding = 'utf-8'
                 return response.text
 
     except requests.exceptions.HTTPError as http_err:

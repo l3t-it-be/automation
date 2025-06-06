@@ -33,7 +33,10 @@ with requests.Session() as session:
             response = get_web_data(
                 url, session=session, params=data, json=True
             )
-            result = round(response['getSum'], 2)
-            results.append(result)
+            if response:
+                result = round(response['getSum'], 2)
+                results.append(result)
+            else:
+                print('API doesn\'t respond')
 
 print(sum(results))

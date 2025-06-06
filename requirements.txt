@@ -11,3 +11,4 @@ beautifulsoup4~=4.13.4
 aiofiles~=24.1.0
 Pyrogram~=2.0.106
 tgcrypto~=1.2.5
+lxml~=5.4.0
