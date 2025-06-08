@@ -44,6 +44,10 @@ jobs:
         run: pytest -k selenium1py_pythonanywhere
       - name: stepik_tests
         if: github.event.inputs.deployment_target == 'stepik_tests'
+        env:
+          LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+          LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+          STUDENT_NAME: ${{ secrets.STUDENT_NAME }}
         run: pytest -k stepik
       - name: suninjuly_tests
         if: github.event.inputs.deployment_target == 'suninjuly_tests'
