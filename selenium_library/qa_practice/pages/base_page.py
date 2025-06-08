@@ -5,7 +5,6 @@ class BasePage:
 
     def open_page(self, url):
         self.browser.set_window_size(1920, 1080)
-        self.browser.get(url)
         return self.browser.get(url)
 
     def find(self, args):

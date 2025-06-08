@@ -26,6 +26,5 @@ class TestLoginPage:
         self.login_page.assert_login_password_input_max_length()
         self.login_page.fill_out_login_password_input()
 
-        self.login_page.assert_gdpr_checkbox_is_active()
         self.login_page.assert_stay_logged_in_checkbox_is_active()
         self.login_page.assert_submit_button_is_active()

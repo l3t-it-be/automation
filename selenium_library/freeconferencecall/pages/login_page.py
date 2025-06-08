@@ -23,10 +23,6 @@ class LoginPage(BasePage):
         self.login_password_input_max_length_expected = 32
         self.login_password_input_value = random_generator.password()
 
-        self.gdpr_checkbox_locator = (
-            'css selector',
-            'input#gdpr_checkbox',
-        )
         self.stay_logged_in_checkbox_locator = (
             'css selector',
             'input[name="rememberme"]',
@@ -47,10 +43,6 @@ class LoginPage(BasePage):
         return self.find(self.login_password_input_locator)
 
     @property
-    def gdpr_checkbox(self):
-        return self.find(self.gdpr_checkbox_locator)
-
-    @property
     def stay_logged_in_checkbox(self):
         return self.find(self.stay_logged_in_checkbox_locator)
 
@@ -66,11 +58,6 @@ class LoginPage(BasePage):
     def assert_login_password_input_is_active(self):
         self.element_is_visible_and_enabled(
             self.login_password_input, 'Password input on Login page'
-        )
-
-    def assert_gdpr_checkbox_is_active(self):
-        self.element_is_visible_and_enabled(
-            self.gdpr_checkbox, 'GDPR checkbox on Login page'
         )
 
     def assert_stay_logged_in_checkbox_is_active(self):
