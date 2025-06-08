@@ -1,11 +1,14 @@
+import os
 import time
 
 import pytest
+from dotenv import load_dotenv
 
 from selenium_library.stepik.pages.login_page import LoginPage
 from selenium_library.stepik.pages.main_page import MainPage
 from selenium_library.stepik.pages.profile_page import ProfilePage
-from selenium_library.stepik.test_data.credentials import student_name
+
+load_dotenv()
 
 
 @pytest.mark.stepik
@@ -28,5 +31,5 @@ class TestStepik:
         profile_page = ProfilePage(browser)
         profile_page.should_be_profile_page()
         profile_page.student_name_should_match_the_one_authenticated(
-            student_name
+            os.environ['STUDENT_NAME']
         )

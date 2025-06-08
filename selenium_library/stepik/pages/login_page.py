@@ -1,11 +1,12 @@
+import os
+
+from dotenv import load_dotenv
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium_library.stepik.pages.base_page import BasePage
-from selenium_library.stepik.test_data.credentials import (
-    login_email,
-    login_password,
-)
+
+load_dotenv()
 
 
 class LoginPage(BasePage):
@@ -34,10 +35,14 @@ class LoginPage(BasePage):
         )
 
     def input_email(self):
-        self.find(self.login_email_input_locator).send_keys(login_email)
+        self.find(self.login_email_input_locator).send_keys(
+            os.environ['LOGIN_EMAIL']
+        )
 
     def input_password(self):
-        self.find(self.login_password_input_locator).send_keys(login_password)
+        self.find(self.login_password_input_locator).send_keys(
+            os.environ['LOGIN_PASSWORD']
+        )
 
     def click_submit_log_in_button(self):
         self.find(self.submit_log_in_button_locator).click()
