@@ -19,7 +19,7 @@ class MainPage(BasePage):
 
     @property
     def profile_menu_button(self):
-        return WebDriverWait(self.browser, 5).until(
+        return WebDriverWait(self.browser, 15).until(
             ec.element_to_be_clickable(self.profile_menu_button_locator)
         )
 
