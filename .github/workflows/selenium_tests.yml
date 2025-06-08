@@ -19,6 +19,10 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    env:
+      LOGIN_EMAIL: ${{ vars.LOGIN_EMAIL }}
+      LOGIN_PASSWORD: ${{ vars.LOGIN_PASSWORD }}
+      STUDENT_NAME: ${{ vars.STUDENT_NAME }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -44,10 +48,6 @@ jobs:
         run: pytest -k selenium1py_pythonanywhere
       - name: stepik_tests
         if: github.event.inputs.deployment_target == 'stepik_tests'
-        env:
-          LOGIN_EMAIL: ${{ vars.LOGIN_EMAIL }}
-          LOGIN_PASSWORD: ${{ vars.LOGIN_PASSWORD }}
-          STUDENT_NAME: ${{ vars.STUDENT_NAME }}
         run: pytest -k stepik
       - name: suninjuly_tests
         if: github.event.inputs.deployment_target == 'suninjuly_tests'
