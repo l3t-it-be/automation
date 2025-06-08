@@ -10,6 +10,7 @@ on:
         type: choice
         options:
           - all_tests
+          - freeconferencecall_tests
           - qa_practice_tests
           - pythonanywhere_tests
           - stepik_tests
@@ -31,16 +32,19 @@ jobs:
         run: pip install -r requirements.txt
       - name: all_tests
         if: github.event.inputs.deployment_target == 'all_tests'
-        run: pytest --reruns 3 --reruns-delay 1
+        run: pytest
+      - name: freeconferencecall_tests
+        if: github.event.inputs.deployment_target == 'freeconferencecall_tests'
+        run: pytest -k freeconferencecall
       - name: qa_practice_tests
         if: github.event.inputs.deployment_target == 'qa_practice_tests'
-        run: pytest -k qa_practice --reruns 3 --reruns-delay 1
+        run: pytest -k qa_practice
       - name: pythonanywhere_tests
         if: github.event.inputs.deployment_target == 'pythonanywhere_tests'
-        run: pytest -k selenium1py_pythonanywhere --reruns 3 --reruns-delay 1
+        run: pytest -k selenium1py_pythonanywhere
       - name: stepik_tests
         if: github.event.inputs.deployment_target == 'stepik_tests'
-        run: pytest -k stepik --reruns 3 --reruns-delay 1
+        run: pytest -k stepik
       - name: suninjuly_tests
         if: github.event.inputs.deployment_target == 'suninjuly_tests'
-        run: pytest -k suninjuly_github_io --reruns 3 --reruns-delay 1
+        run: pytest -k suninjuly_github_io
