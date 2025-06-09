@@ -7,7 +7,7 @@ with browser:
         [
             int(p.text)
             for p in browser.find_elements(
-                'xpath', '//div[@class="text"]/p[2]'
+                'css selector', '.text p:nth-child(2)'
             )
             if p.text.isdigit()
         ]
