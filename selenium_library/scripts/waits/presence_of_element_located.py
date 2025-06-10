@@ -4,18 +4,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium_library.browser_setup import browser
 
 with browser:
-    browser.set_window_size(1920, 1080)  # necessity for headless mode
-    browser.get('https://parsinger.ru/expectations/6/index.html')
+    browser.get('https://parsinger.ru/selenium/9/9.5.1/index.html')
 
-    button = WebDriverWait(browser, 5).until(
-        ec.element_to_be_clickable(('css selector', '#btn'))
+    locator = ('css selector', '#order-number')
+    order = WebDriverWait(browser, 15).until(
+        ec.presence_of_element_located(locator)
     )
-    button.click()
-
-    element = WebDriverWait(browser, 20).until(
-        ec.presence_of_element_located(('css selector', '.BMH21YY'))
-    )
-    browser.execute_script(
-        'return arguments[0].scrollIntoView(true);', element
-    )
-    print(element.text)
+    print(order.text)
