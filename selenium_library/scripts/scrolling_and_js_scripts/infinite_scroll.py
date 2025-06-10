@@ -3,7 +3,7 @@ from selenium.webdriver import Keys
 from selenium_library.browser_setup import browser
 
 with browser:
-    browser.set_window_size(1920, 1080)  # necessity for headless option
+    browser.set_window_size(1920, 1080)  # necessity for headless mode
     browser.get('https://parsinger.ru/infiniti_scroll_1/')
 
     scrolling_container = browser.find_element(

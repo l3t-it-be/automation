@@ -3,7 +3,7 @@ import time
 from selenium_library.browser_setup import browser
 
 with browser:
-    browser.set_window_size(1920, 1080)  # necessity for headless option
+    browser.set_window_size(1920, 1080)  # necessity for headless mode
     browser.get('https://parsinger.ru/selenium/5.7/4/index.html')
 
     container = browser.find_element('css selector', '#main_container')
