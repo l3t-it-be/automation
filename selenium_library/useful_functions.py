@@ -14,3 +14,13 @@ def calculate_formula(formula_text, x_text):
     )
 
     return result
+
+
+def get_articles_from_page(browser) -> list[int]:
+    products_articles = [
+        int(product_article.text.split(':')[1].strip())
+        for product_article in browser.find_elements(
+            'css selector', 'ul li:nth-child(1)'
+        )
+    ]
+    return products_articles
