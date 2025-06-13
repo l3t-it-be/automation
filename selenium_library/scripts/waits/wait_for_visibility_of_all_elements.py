@@ -8,7 +8,9 @@ with browser:
 
     browser.find_element('css selector', '#showProducts').click()
 
-    products = WebDriverWait(browser, 10).until(
+    wait = WebDriverWait(browser, 10, poll_frequency=1)
+
+    products = wait.until(
         ec.visibility_of_all_elements_located(('css selector', '.product'))
     )
 
@@ -27,7 +29,7 @@ with browser:
     input_field.send_keys(sum(prices_lst))
     browser.find_element('css selector', '#checkSum').click()
 
-    password = WebDriverWait(browser, 2).until(
+    password = wait.until(
         ec.visibility_of_element_located(('css selector', '#secretMessage'))
     )
     print(password.text)

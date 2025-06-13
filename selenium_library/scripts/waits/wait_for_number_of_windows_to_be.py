@@ -8,15 +8,15 @@ with browser:
     browser.get('https://parsinger.ru/selenium/9/9.7.3/index.html')
 
     browser.find_element('css selector', '#summonBtn').click()
-    WebDriverWait(browser, 10, poll_frequency=0.01).until(
-        ec.number_of_windows_to_be(5)
-    )
 
+    wait = WebDriverWait(browser, 10, poll_frequency=0.01)
+
+    wait.until(ec.number_of_windows_to_be(5))
     windows = browser.window_handles
     browser.switch_to.window(windows[0])
 
     browser.find_element('css selector', '#passwordBtn').click()
-    WebDriverWait(browser, 10).until(ec.alert_is_present())
+    wait.until(ec.alert_is_present())
 
     alert = browser.switch_to.alert
     password = alert.text.split(':')[1].strip()

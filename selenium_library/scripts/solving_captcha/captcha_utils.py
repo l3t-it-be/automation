@@ -11,7 +11,7 @@ import speech_recognition as sr
 
 from selenium_library.browser_setup import browser
 
-solver = TwoCaptcha('*****************')
+solver = TwoCaptcha('**************')
 results_dict = {}
 reported_captcha_ids = set()
 
@@ -90,31 +90,29 @@ def audio_to_text() -> str:
 
 
 def solve_recaptcha() -> None:
+    wait = WebDriverWait(browser, 10, poll_frequency=1)
+
+    recaptcha_iframe = ('css selector', 'iframe[title="reCAPTCHA"]')
+    recaptcha_box = ('css selector', '#recaptcha-anchor')
+    recaptcha_pictures = (
+        'css selector',
+        'iframe[title*="текущую проверку reCAPTCHA"]',
+    )
+    recaptcha_audio_button = (
+        'css selector',
+        '#recaptcha-audio-button',
+    )
+
     try:
-        WebDriverWait(browser, 10).until(
-            ec.frame_to_be_available_and_switch_to_it(
-                ('css selector', 'iframe[title="reCAPTCHA"]')
-            )
-        )
-        WebDriverWait(browser, 10).until(
-            ec.element_to_be_clickable(('css selector', '#recaptcha-anchor'))
-        ).click()
+        wait.until(ec.frame_to_be_available_and_switch_to_it(recaptcha_iframe))
+        wait.until(ec.element_to_be_clickable(recaptcha_box)).click()
 
         browser.switch_to.default_content()
 
-        WebDriverWait(browser, 10).until(
-            ec.frame_to_be_available_and_switch_to_it(
-                (
-                    'css selector',
-                    'iframe[title*="текущую проверку reCAPTCHA"]',
-                )
-            )
+        wait.until(
+            ec.frame_to_be_available_and_switch_to_it(recaptcha_pictures)
         )
-        WebDriverWait(browser, 10).until(
-            ec.element_to_be_clickable(
-                ('css selector', '#recaptcha-audio-button')
-            )
-        ).click()
+        wait.until(ec.element_to_be_clickable(recaptcha_audio_button)).click()
 
         audio_src = browser.find_element(
             'css selector', '#audio-source'
@@ -133,22 +131,31 @@ def solve_recaptcha() -> None:
 
 
 def solve_yandex_captcha():
-    WebDriverWait(browser, 10).until(
-        ec.frame_to_be_available_and_switch_to_it(
-            ('css selector', 'iframe[title="SmartCaptcha checkbox widget"]')
-        )
+    wait = WebDriverWait(browser, 10, poll_frequency=1)
+
+    yandex_captcha_widget = (
+        'css selector',
+        'iframe[title="SmartCaptcha checkbox widget"]',
     )
-    WebDriverWait(browser, 10).until(
-        ec.element_to_be_clickable(
-            ('css selector', 'input[class="CheckboxCaptcha-Button"]')
-        )
-    ).click()
+    yandex_captcha_button = (
+        'css selector',
+        'input[class="CheckboxCaptcha-Button"]',
+    )
+    yandex_captcha_advanced_widget = (
+        'css selector',
+        'iframe[title="SmartCaptcha advanced widget"]',
+    )
+
+    wait.until(
+        ec.frame_to_be_available_and_switch_to_it(yandex_captcha_widget)
+    )
+    wait.until(ec.element_to_be_clickable(yandex_captcha_button)).click()
 
     browser.switch_to.default_content()
 
-    WebDriverWait(browser, 10).until(
+    wait.until(
         ec.frame_to_be_available_and_switch_to_it(
-            ('css selector', 'iframe[title="SmartCaptcha advanced widget"]')
+            yandex_captcha_advanced_widget
         )
     )
     img_url = browser.find_element(

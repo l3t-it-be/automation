@@ -15,9 +15,11 @@ with browser:
     all_numbers = []
     tabs = browser.window_handles
 
+    wait = WebDriverWait(browser, 5, poll_frequency=1)
+
     for tab in tabs[1:]:
         browser.switch_to.window(tab)
-        WebDriverWait(browser, 3).until(
+        wait.until(
             ec.presence_of_element_located(
                 ('css selector', '.numbers-container')
             )
@@ -32,7 +34,7 @@ with browser:
     browser.switch_to.window(tabs[0])
 
     browser.find_element('css selector', 'input').send_keys(sum(all_numbers))
-    WebDriverWait(browser, 5).until(
+    wait.until(
         ec.text_to_be_present_in_element(('css selector', '#timer'), '0')
     )
     browser.find_element('css selector', 'button#checkButton').click()

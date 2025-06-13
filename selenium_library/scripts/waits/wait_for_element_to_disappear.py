@@ -12,18 +12,17 @@ with browser:
     )
     dropdown = Select(browser.find_element('css selector', 'select'))
     dropdown.select_by_value('card')
-
     browser.find_element('css selector', '#submit-order').click()
-    WebDriverWait(browser, 7).until(
+
+    wait = WebDriverWait(browser, 7, poll_frequency=1)
+    wait.until(
         ec.invisibility_of_element_located(('css selector', '#spinner'))
     )
 
-    WebDriverWait(browser, 2).until(
+    wait.until(
         ec.element_to_be_clickable(('css selector', '#confirm-address'))
     ).click()
-    WebDriverWait(browser, 4).until(
-        ec.invisibility_of_element_located(('css selector', '.modal'))
-    )
+    wait.until(ec.invisibility_of_element_located(('css selector', '.modal')))
 
     browser.find_element('css selector', '#get-code').click()
     password = browser.find_element('css selector', '#result')

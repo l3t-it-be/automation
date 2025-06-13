@@ -3,18 +3,16 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium_library.browser_setup import browser
 
-# for headed mode only
-
 with browser:
     browser.get('https://parsinger.ru/selenium/9/9.3.1/index.html')
 
+    wait = WebDriverWait(browser, 15, poll_frequency=1)
+
     start_button = browser.find_element('css selector', '#startButton')
-    WebDriverWait(browser, 1).until(
-        ec.element_to_be_clickable(start_button)
-    ).click()
+    wait.until(ec.element_to_be_clickable(start_button)).click()
 
     for _ in range(5):
-        WebDriverWait(browser, 15).until(
+        wait.until(
             ec.element_to_be_clickable(('css selector', '#dynamicButton'))
         ).click()
 

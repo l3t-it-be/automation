@@ -10,14 +10,12 @@ with browser:
     close_ad_button = browser.find_element('css selector', '#closeBtn')
     close_ad_button.click()
 
-    WebDriverWait(browser, 10).until(
-        ec.invisibility_of_element_located(('css selector', '#ad'))
-    )
+    wait = WebDriverWait(browser, 10, poll_frequency=1)
+
+    wait.until(ec.invisibility_of_element_located(('css selector', '#ad')))
 
     click_me_button = browser.find_element('css selector', 'button')
-    WebDriverWait(browser, 5).until(
-        ec.element_to_be_clickable(click_me_button)
-    ).click()
+    wait.until(ec.element_to_be_clickable(click_me_button)).click()
 
     message = browser.find_element('css selector', '#message').text
     print(message)

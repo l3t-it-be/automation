@@ -6,10 +6,12 @@ from selenium_library.browser_setup import browser
 with browser:
     browser.get('https://parsinger.ru/expectations/4/index.html')
 
+    wait = WebDriverWait(browser, 20, poll_frequency=1)
+
     button = browser.find_element('css selector', 'button')
-    WebDriverWait(browser, 5).until(ec.element_to_be_clickable(button))
+    wait.until(ec.element_to_be_clickable(button))
     button.click()
 
-    if WebDriverWait(browser, 20).until(ec.title_contains('JK8HQ')):
+    if wait.until(ec.title_contains('JK8HQ')):
         result = browser.title
     print(result)

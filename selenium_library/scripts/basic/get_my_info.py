@@ -1,5 +1,3 @@
-import time
-
 from selenium_library.browser_setup import browser
 
 url = 'https://2ip.ru/'
