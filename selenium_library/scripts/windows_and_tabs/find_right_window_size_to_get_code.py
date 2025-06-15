@@ -18,11 +18,15 @@ with browser:
         'return window.innerHeight'
     )
 
+    found = False
     for x in window_size_x:
+        if found:
+            break
         for y in window_size_y:
             browser.set_window_size(x + width_border, y + height_border)
             result = browser.find_element('css selector', '#result').text
             if result.strip():
                 right_size = {'width': x, 'height': y}
                 print(right_size, result)
+                found = True
                 break
