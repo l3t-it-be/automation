@@ -51,6 +51,8 @@ def get_web_data(url: str, session=None, json=False, params=None, auth=None,
             if stream:
                 if iter_content:
                     return response.iter_content(chunk_size=chunk_size)
+                elif response:
+                    response.close()
                 else:
                     return response.content
             else:
