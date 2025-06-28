@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","10012","test_successful_login","selenium_library.stepik.tests","Sat Jun 28 20:19:22 UTC 2025","passed","Sat Jun 28 20:19:32 UTC 2025","TestStepik","test_authentication","",""
