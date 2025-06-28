@@ -18,3 +18,4 @@ pydub~=0.25.1
 SpeechRecognition~=3.14.3
 pydantic~=2.11.7
 allure-pytest==2.14.0
+pytest-rerunfailures~=13.0
