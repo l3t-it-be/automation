@@ -36,7 +36,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: all_tests
         if: github.event.inputs.deployment_target == 'all_tests'
-        run: pytest
+        run: pytest -k selenium_library
       - name: freeconferencecall_tests
         if: github.event.inputs.deployment_target == 'freeconferencecall_tests'
         run: pytest -k freeconferencecall
