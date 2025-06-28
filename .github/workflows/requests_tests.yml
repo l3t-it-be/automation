@@ -25,3 +25,9 @@ jobs:
         run: pip install -r requirements.txt
       - name: restful_api_tests
         run: pytest -k restful_api
+
+      - name: Upload Allure results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
