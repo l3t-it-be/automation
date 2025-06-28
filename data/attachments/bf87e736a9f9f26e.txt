@@ -1,0 +1,18 @@
+
+Start Chrome browser for test
+Your code: 27.32616842125542
+
+Quit browser after test
+
+Start Chrome browser for test
+
+Quit browser after test
+
+Start Chrome browser for test
+
+Quit browser after test
+
+Start Chrome browser for test
+Your code: 27.326168442955513
+
+Quit browser after test

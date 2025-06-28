@@ -1,5 +1,0 @@
-
-Start Chrome browser for test
-Your code: 27.326167797663167
-
-Quit browser after test
