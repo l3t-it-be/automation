@@ -1,5 +1,0 @@
-
-Start Chrome browser for test
-Element not found on the page
-
-Quit browser after test
