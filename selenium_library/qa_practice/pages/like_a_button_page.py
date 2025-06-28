@@ -1,3 +1,5 @@
+import allure
+
 from selenium_library.qa_practice.pages.base_page import BasePage
 
 
@@ -9,5 +11,6 @@ class LikeAButtonPage(BasePage):
         self.like_a_button_locator = ('link text', 'Click')
 
     @property
+    @allure.step('Like a button')
     def like_a_button(self):
         return self.find(self.like_a_button_locator)

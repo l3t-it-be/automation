@@ -1,0 +1,27 @@
+name: API tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Deployment target
+        required: true
+        default: restful_api_tests
+        type: choice
+        options:
+          - restful_api_tests
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: restful_api_tests
+        run: pytest -k restful_api

@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -18,12 +19,14 @@ class MainPage(BasePage):
         )
 
     @property
+    @allure.step('Profile menu button')
     def profile_menu_button(self):
         return WebDriverWait(self.browser, 5).until(
             ec.element_to_be_clickable(self.profile_menu_button_locator)
         )
 
     @property
+    @allure.step('Profile button')
     def profile_button(self):
         return WebDriverWait(self.browser, 5).until(
             ec.element_to_be_clickable(self.profile_button_locator)

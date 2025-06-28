@@ -1,3 +1,5 @@
+import allure
+
 from selenium_library.selenium1py_pythonanywhere.pages.base_page import (
     BasePage,
 )
@@ -29,24 +31,29 @@ class LoginPage(BasePage):
             'button[name="registration_submit"]',
         )
 
+    @allure.step('Assert Login page contains its text in URL')
     def should_be_login_page(self):
         self.url_should_contain_text(self.text_in_url)
 
+    @allure.step('Assert presence of Login Form on Login page')
     def should_have_login_form(self):
         assert self.find(
             self.login_form_locator
         ).is_displayed(), 'Login form is not presented'
 
+    @allure.step('Assert presence of Registration Form on Login page')
     def should_have_register_form(self):
         assert self.find(
             self.register_form_locator
         ).is_displayed(), 'Register form is not presented'
 
+    @allure.step('Assert Login page contains its elements')
     def should_be_on_login_page(self):
         self.should_be_login_page()
         self.should_have_login_form()
         self.should_have_register_form()
 
+    @allure.step('Register new user')
     def register_new_user(self, email, password):
         self.browser.execute_script('window.scrollBy(0, 100);')
 

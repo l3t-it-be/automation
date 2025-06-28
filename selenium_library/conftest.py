@@ -49,6 +49,11 @@ def setup_browser(browser_name, language):
     driver_options.add_argument('--disable-extensions')
     driver_options.add_argument('--disable-popup-blocking')
     driver_options.add_argument('--ignore-certificate-errors')
+    driver_options.add_argument('--disable-logging')
+    driver_options.add_argument('--log-level=3')
+    driver_options.add_experimental_option(
+        'excludeSwitches', ['enable-logging']
+    )
     driver_options.add_argument('--headless=new')
 
     if browser_name == 'chrome':
