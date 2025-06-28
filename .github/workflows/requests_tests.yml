@@ -26,5 +26,8 @@ jobs:
       - name: restful_api_tests
         run: pytest -k restful_api
 
+      - name: Install Allure CLI
+        run: |
+          sudo npm install -g allure-commandline --unsafe-perm=true
       - name: Generate Allure report
         run: allure generate allure-results --clean -o allure-report
