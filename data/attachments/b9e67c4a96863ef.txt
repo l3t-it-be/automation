@@ -1,0 +1,5 @@
+
+Start Chrome browser for test
+No second alert presented
+
+Quit browser after test
